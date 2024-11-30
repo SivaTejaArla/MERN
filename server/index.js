@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan'
 import helmet from 'helmet'
 import connectDB  from './config/connectDB.js';
+import userRouter from './routes/user.route.js';
 
 
 
@@ -27,14 +28,17 @@ app.use(helmet({
 
 
 const PORT = 8080 || process.env.PORT
-app.get("/",(req,res)=>{
+app.get("/",(request,response)=>{
 
-
-res.json({
+response.json({
     message : " Server started Running!!"
 })
 
 })
+app.use('/api/user',userRouter)
+
+
+
 connectDB().then( ()=>{
     app.listen(PORT ,()=>{
         console.log("Server is running !!!1",  PORT);
