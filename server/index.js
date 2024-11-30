@@ -30,7 +30,7 @@ app.use(helmet({
 
 
 const PORT = 8080 || process.env.PORT
-app.get("/",(request,response)=>{
+app.get("/",(req,res)=>{
 
 response.json({
     message : " Server started Running!!"
